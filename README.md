@@ -28,3 +28,8 @@ python app.py
 ```
 
 The `OMP_THREAD_LIMIT=1` bit in the docker-compose.yml is crucial for performance. It makes a 70x or so difference on my machine (3 seconds vs ~220 seconds) when running in a docker container. Otherwise it's unnecessary.
+
+# Performance
+
+Tesseract seems very performant for CPU-based OCR work and its quality is excellent. A multicore machine will make a big difference. I have an i7-3770 with 4 cores and 8 logical processors running at 3.4GHz. It generally averages less than 1 page per second (if you're doing more than 8 pages). So it's really taking about 8 seconds per page, but doing 8 pages at once. I find this performance to be more than adequate for my needs. With the default settings I was able to do a 620 page document in 8 minutes and 28 seconds (.8 seconds/page) running in a docker container.
+Performance is also why I chose the `python:slim` base image.

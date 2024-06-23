@@ -7,6 +7,7 @@ import os
 import shutil
 import logging
 from concurrent.futures import ProcessPoolExecutor
+from PIL import Image
 
 logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
 
@@ -52,6 +53,23 @@ def ocr_pdf():
     results = pdf_to_images_concurrently(file)
 
     return jsonify(results)
+
+@app.route('/imageocr', methods=['POST'])
+def ocr_image():
+    logging.debug('Received request: /imageocr')
+
+    if 'file' not in request.files:
+        logging.error('No image file uploaded')
+        return jsonify({'error': 'No image file uploaded'}), 400
+
+    file = request.files['file']
+    # Read the image file
+    image = Image.open(file.stream)  # Assuming PIL library is available
+    # Convert the image to RGB (required by pytesseract)
+    rgb_image = image.convert("RGB")
+    # Perform OCR on the image
+    text = pytesseract.image_to_string(rgb_image)
+    return jsonify({"text": text})
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=5200)

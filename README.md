@@ -1,7 +1,11 @@
 # pdfocr
-Simple app to OCR PDF files. Runs as a web api service on port 5200. The endpoint is /pdfocr. You pass in a PDF file and it returns the OCRed text as a JSON array of pages with a `page_number` and `text` fields.
+Simple app to OCR PDF and image files. Runs as a web api service on port 5200. The endpoints are /pdfocr and /imageocr. 
+
+For /pdfocr, you pass in a PDF file and it returns the OCRed text as a JSON array of pages with a `page_number` and `text` fields.
 
 `curl --location 'localhost:5200/pdfocr' --form 'file=@"/C:/documents/mydocument.pdf"'`
+
+/imageocr is the same, except you pass an image (jpeg, png, gif, etc) and it will be OCRed.
 
 You can run it in docker as I do, or you can run it directly with `python app.py`.
 

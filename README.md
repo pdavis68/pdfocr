@@ -5,7 +5,7 @@ For /pdfocr, you pass in a PDF file and it returns the OCRed text as a JSON arra
 
 `curl --location 'localhost:5200/pdfocr' --form 'file=@"/C:/documents/mydocument.pdf"'`
 
-/imageocr is the same, except you pass an image (jpeg, png, gif, etc) and it will be OCRed.
+/imageocr is the same, except you pass an image (jpeg, png, gif, etc) and it will be OCRed. It also doesn't return an array of pages. It simply returns a json object with a "text" field.
 
 You can run it in docker as I do, or you can run it directly with `python app.py`.
 

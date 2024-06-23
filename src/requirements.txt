@@ -1,0 +1,5 @@
+Flask
+flask-cors
+pytesseract
+pdf2image
+flask_cors

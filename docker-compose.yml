@@ -1,0 +1,10 @@
+version: "3.8"  
+
+services:
+  pdfocr:
+    build: .
+    restart: always
+    ports:
+      - "5200:5200"
+    environment:
+      - OMP_THREAD_LIMIT=1

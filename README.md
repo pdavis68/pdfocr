@@ -29,7 +29,7 @@ pip install -r requirements.txt
 python app.py
 ```
 
-The `OMP_THREAD_LIMIT=1` bit in the docker-compose.yml is crucial for performance. It makes a 70x or so difference on my machine (3 seconds vs ~220 seconds) when running in a docker container. Otherwise it's unnecessary.
+The `OMP_THREAD_LIMIT=1` bit in the docker-compose.yml is crucial for performance. It makes a 70x or so difference on my machine (3 seconds vs ~220 seconds) when running in a docker container. It's only needed in docker containers, though.
 
 # Performance
 

@@ -1,12 +1,12 @@
 # pdfocr
-Simple app to OCR PDF files.
+Simple app to OCR PDF files. Runs as a web api service on port 5200. Then endpoint is /pdfocr. You pass in a PDF file and it returns the OCRed text as a JSON array of pages.
+
+You can run it in docker as I do, or you can run it directly with `python app.py`.
 
 # Overview
 
 This is a simple flask app that uses pdf2image to convert PDF files to JPEG files and then uses tesseract to OCR the pages. 
 The app makes use of the ProcessPoolExecutor so that it can spread the work across multiple CPU, if available.
-
-The app runs on port 5200.
 
 You might prefer running it under something like gunicorn. I run this for my personal use only and so it's not tuned for a production environment at all.
 

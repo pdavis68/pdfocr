@@ -37,7 +37,7 @@ def pdf_to_images_concurrently(file):
         results = list(executor.map(process_page, images, range(1, num_pages + 1)))
 
     logging.debug('Completed PDF to images conversion')
-    return results
+    return { "pages" : results }
 
 @app.route('/pdfocr', methods=['POST'])
 def ocr_pdf():
